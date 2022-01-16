@@ -49,6 +49,20 @@ with open(load_file) as election_data:
         # begin adding to candidates vote count
         candidate_votes[candidate_name] += 1
 
+    # save the results to our text file
+    with open (file_saved, "w") as txt_file:
+        
+        #print final vote count to the terminal
+        election_results = (
+            f"\nElection Results\n"
+            f"-------------------------\n"
+            f"Total Votes: {total_votes:,}\n"
+            f"-------------------------\n")
+        print(election_results, end="")
+
+        #save the final vote count to the text file
+        txt_file.write(election_results)
+
 # determine percentage of votes for each candidate
 for candidate_name in candidate_votes:
 
@@ -58,8 +72,8 @@ for candidate_name in candidate_votes:
     # calculate percentage
     vote_percentage = float(votes) / float(total_votes) * 100
     
-    # print each candidates name, vote count and percentage of votes to terminal
-    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+    # # print each candidates name, vote count and percentage of votes to terminal
+    # print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
 
     #Determine if vote count calculated is greater than the winning count
     if (votes > winning_count) and (vote_percentage > winning_percentage):
@@ -69,13 +83,13 @@ for candidate_name in candidate_votes:
             # and winning candidate to candidate name
             winning_candidate = candidate_name 
 
-# print out winning candidate summary
-winning_candidate_summary = (
-    f"-----------------------\n"
-    f"Winner: {winning_candidate}\n"
-    f"Winning Vote Count: {winning_count:,}\n"
-    f"Winning Vote Percentage: {winning_percentage:.1f}%\n"
-    f"------------------------\n")
+# # print out winning candidate summary
+# winning_candidate_summary = (
+#     f"-----------------------\n"
+#     f"Winner: {winning_candidate}\n"
+#     f"Winning Vote Count: {winning_count:,}\n"
+#     f"Winning Vote Percentage: {winning_percentage:.1f}%\n"
+#     f"------------------------\n")
 
 # print(total_votes)
 # print(candidate_options)
