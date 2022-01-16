@@ -72,8 +72,12 @@ for candidate_name in candidate_votes:
     # calculate percentage
     vote_percentage = float(votes) / float(total_votes) * 100
     
-    # # print each candidates name, vote count and percentage of votes to terminal
-    # print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+    # print each candidate, their vote count and percentage of votes to terminal
+    candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+    print(candidate_results)
+
+    # save the candidate results to txt_file
+    txt_file.write(candidate_results)
 
     #Determine if vote count calculated is greater than the winning count
     if (votes > winning_count) and (vote_percentage > winning_percentage):
@@ -94,6 +98,6 @@ for candidate_name in candidate_votes:
 # print(total_votes)
 # print(candidate_options)
 # print(candidate_votes)
-print(winning_candidate_summary)
+# print(winning_candidate_summary)
 
 
